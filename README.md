@@ -10,6 +10,13 @@
 - Doesn't support data with spaces
 - Doesn't support complex queries
 # Usage
+- Start the database
+  ```
+    yarn start
+  ```
+  ```
+    npm start
+  ```
 - Creating or using a database
   ```
     Use Database dbname;
