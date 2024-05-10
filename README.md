@@ -25,6 +25,10 @@
     Create Database dbname;
   ```
   Both these commands create a new folder named ```dbname``` where the tables are stored as ```csv``` files.
+- Show list of tables
+  ```
+    Show Tables;
+  ```
 - Creating a table
   ```
    Create Table Warriors (Name,Attack,Defense,PowerLevel);

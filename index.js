@@ -1,5 +1,5 @@
 const readline = require('readline');
-const executeQuery = require('./source_files/wrapper');
+const executeQuery = require('./src/wrapper');
 
 // Create readline interface
 const rl = readline.createInterface({
