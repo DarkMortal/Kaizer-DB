@@ -3,7 +3,7 @@ const regexWhere = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|Fr
 const parseWhereRegex = /^\s*(\w+)\s*([=,>,<,>=,<=,!=]+)\s*[\',\"]*(\w+)[\',\"]*/;
 const createTableRegex = /^\s*(CREATE|create|Create)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+\((.*?)\)\;$/;
 const insertTableRegex = /^\s*(INSERT|insert|Insert)\s+(INTO|into|Into)\s+[\',\"]*(\w+)[\',\"]*\s*\((.*?)\)\s*(VALUES|values|Values)\s*(.*)\;$/i;
-const updateTableRegex = /^\s*(UPDATE|update|Update|)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+(.*)?\s+(WHERE|where|Where)\s*(.*)?\;$/;
+const updateTableRegex = /^\s*(UPDATE|update|Update|)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+(SET|set|Set)\s+(.*)?\s+(WHERE|where|Where)\s*(.*)?\;$/;
 const deleteRecordRegex = /^\s*(DELETE|delete|Delete)\s+(FROM|from|From)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+(WHERE|where|Where)\s*(.*)?\;$/;
 
 const dropTableRegex = /^\s*(DROP|drop|Drop)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s*\;/;
@@ -84,14 +84,15 @@ function parseQuery(queryStr) {
 
         let updateFields_ = [], whereClauses_ = [], operators_ = [];
 
-        query[4].split(',').map(s => s.trim()).forEach(e => {
+        query[5].split(',').map(s => s.trim()).forEach(e => {
             let match = e.match(parseWhereRegex);
+            if(match[2] !== '=') throw 'Invalid assignment operator';
             updateFields_.push({
                 field: match[1],
                 value: match[3]
             });
         });
-        query[6].split(/AND | OR | and | or | And | Or/i).map(s => s.trim()).forEach(e => {
+        query[7].split(/AND | OR | and | or | And | Or/i).map(s => s.trim()).forEach(e => {
             let match = e.match(parseWhereRegex);
             whereClauses_.push({
                 keyAttr: match[1],
@@ -99,7 +100,7 @@ function parseQuery(queryStr) {
                 keyAttrValue: match[3]
             });
         });
-        let operatorArray = query[6].split(' ');
+        let operatorArray = query[7].split(' ');
         operatorArray.forEach(operator => {
             if(operatorArrayGlobal.includes(operator))
                 operators_.push(operator.toUpperCase());
