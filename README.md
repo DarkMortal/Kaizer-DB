@@ -29,6 +29,9 @@
   ```
     Show Tables;
   ```
+  Shows list of available csv files in the current directory which is used as the database.
+  
+  ![first](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/2006a7e7-0520-462c-8eac-67426b74605d)
 - Creating a table
   ```
    Create Table Warriors (Name,Attack,Defense,PowerLevel);
