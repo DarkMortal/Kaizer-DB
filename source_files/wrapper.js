@@ -1,5 +1,5 @@
-const parseQuery = require('../query_handlers/queryParser');
-const queryWrapper = require('../query_handlers/executeQuery');
+const parseQuery = require('./query_handlers/queryParser');
+const queryWrapper = require('./query_handlers/executeQuery');
 const table = require('./tableViewer');
 
 let wrapper = null;

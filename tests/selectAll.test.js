@@ -1,5 +1,5 @@
-const parseQuery = require('../query_handlers/queryParser');
-const queryWrapper = require('../query_handlers/executeQuery');
+const parseQuery = require('../source_files/query_handlers/queryParser');
+const queryWrapper = require('../source_files/query_handlers/executeQuery');
 
 let wrapper = new queryWrapper({ parentDir: "tests" });
 
