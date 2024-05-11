@@ -56,11 +56,20 @@
     Select Name from Warriors Where PowerLevel > 9000;
   ```
   ![select3](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/5c2061c0-22c5-4a62-945f-cd8005db062d)
+- Getting records from a table using multiple ```WHERE``` clauses
+  ```
+    Select * from Warriors Where PowerLevel > 9000 and Name = Goku;
+  ```
+  ![where1](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/c1f4c9cb-c021-444a-b442-e26bc4cc4f80)
+  ```
+    Select * from Warriors Where PowerLevel > 9000 or Name = Vegeta;
+  ```
+  ![where2](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/ab74704e-74da-4f98-a556-20ad0eed7599)
 - Updating a record using ```WHERE``` clause
   ```
     Update Table Warriors set PowerLevel = 10000, Defense = 8000 Where Name = Goku;
   ```
-  ![select4](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/415fcbed-8536-46cf-bf44-8cbeed8a6959)
+  ![updateQuery](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/8d162f1d-4e86-47ad-82ea-a688d4fa5bd5)
 - Deleting a record using ```WHERE``` clause
 
   ```
