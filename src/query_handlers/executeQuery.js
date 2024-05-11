@@ -231,8 +231,8 @@ class queryWrapper {
                 if (isThisTupleValid) {
                     updateFields.forEach(fields => {
                         tupleData[headerMap[fields.field]] = fields.value;
-                        writeStream.write("\n" + tupleData.join(','));
                     });
+                    writeStream.write("\n" + tupleData.join(','));
                     recordsCount++;
                 } else writeStream.write("\n" + data[i]);
             }
