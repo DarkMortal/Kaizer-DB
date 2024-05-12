@@ -104,7 +104,7 @@ class queryWrapper {
                     let tempArr = createNullArray(header.length);
                     fields.forEach((field, index) => {
                         if (header.includes(field)) tempArr[headerMap[field]] = tuples[i][index];
-                        else throw "Invalid field name";
+                        else throw `Invalid field name: ${field}`;
                     });
                     tempTupleArr.push(tempArr);
                 }
@@ -130,7 +130,7 @@ class queryWrapper {
 
     async readTable(tablename, fields, whereClauses, operators) {
         if (fields.length !== 1 && fields[0] !== '*') fields.forEach(field => {
-            if (/[^a-zA-Z0-9\s]/.test(field)) throw "Invalid field list";
+            if (/[^a-zA-Z0-9\s]/.test(field)) throw `Invalid field name: ${field}`;
         });
 
         const fileName = `./${this.parentDir}${tablename}.csv`;
@@ -154,7 +154,7 @@ class queryWrapper {
                     let booleanValues = [];
 
                     whereClauses.forEach(clause => {
-                        if (!header.includes(clause.keyAttr)) throw "Invalid field in WHERE clause";
+                        if (!header.includes(clause.keyAttr)) throw `Invalid field in WHERE clause: ${clause.keyAttr}`;
                         const lhs = tupleData[headerMap[clause.keyAttr]];
                         const rhs = clause.keyAttrValue;
                         booleanValues.push(evaluateWhereClause(lhs, rhs, clause.comparator));
@@ -170,7 +170,7 @@ class queryWrapper {
                     header.forEach(field => tempData[field] = tupleData[headerMap[field]]);
                 else fields.forEach(field => {
                     if (header.includes(field)) tempData[field] = tupleData[headerMap[field]];
-                    else throw "Invalid field name";
+                    else throw `Invalid field name: ${field}`;
                 });
                 result.push(tempData);
             }
@@ -195,12 +195,12 @@ class queryWrapper {
 
             //TODO: check if all fields are valid
             updateFields.forEach(fields => {
-                if (!header.includes(fields.field)) throw "Invalid field in UPDATE";
+                if (!header.includes(fields.field)) throw `Invalid field in UPDATE: ${fields.field}`;
             });
 
             //TODO: check if all fields in WHERE clause are valid
             whereClauses.forEach(clause => {
-                if (!header.includes(clause.keyAttr)) throw "Invalid field in WHERE clause";
+                if (!header.includes(clause.keyAttr)) throw `Invalid field in WHERE clause: ${clause.keyAttr}`;
             });
 
             const writeStream = fs.createWriteStream(tempFileName);
@@ -261,7 +261,7 @@ class queryWrapper {
 
             //TODO: check if all fields in WHERE clause are valid
             whereClauses.forEach(clause => {
-                if (!header.includes(clause.keyAttr)) throw "Invalid field in WHERE clause";
+                if (!header.includes(clause.keyAttr)) throw `Invalid field in WHERE clause: ${clause.keyAttr}`;
             });
 
             const writeStream = fs.createWriteStream(tempFileName);
