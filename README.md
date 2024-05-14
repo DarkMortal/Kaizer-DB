@@ -11,7 +11,7 @@
 - Only one query at a time
 - Doesn't support data with spaces
 # Usage
-- Getting started
+- Getting started<br/>
   If you are using this package from the GitHub repository
   ```
     yarn start
