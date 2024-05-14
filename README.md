@@ -10,8 +10,7 @@
 - No type checking
 - Only one query at a time
 - Doesn't support data with spaces
-# Usage
-- Getting started<br/>
+# Getting started
   If you are using this package from the GitHub repository
   ```
     yarn start
@@ -24,6 +23,7 @@
     require('kaizer-db')
   ```
   That's it! No fancy configuration or boiler code. It's as easy as that!!!
+# Usage  
 - Creating or using a database
   ```
     Use Database dbname;
