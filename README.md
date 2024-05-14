@@ -1,22 +1,29 @@
 # Kaizer DB
+## A lightweight and minimal csv database package
 ![logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)
-### A lightweight and minimal csv database package
+<a href="https://www.buymeacoffee.com/darkmortal" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;"></a>
 # Features
 - SQL like syntax
 - Works directly with CSV
 - Supports all CRUD functionalities like INSERT, DELETE etc
 # Drawbacks
+- No type checking
 - Only one query at a time
 - Doesn't support data with spaces
-- Doesn't support complex queries
 # Usage
-- Start the database
+- Getting started
+  If you are using this package from the GitHub repository
   ```
     yarn start
   ```
   ```
     npm start
   ```
+  If you are using this package from the npm repository
+  ```
+    require('kaizer-db')
+  ```
+  That's it! No fancy configuration or boiler code. It's as easy as that!!!
 - Creating or using a database
   ```
     Use Database dbname;
@@ -76,4 +83,9 @@
     Delete From Warriors Where PowerLevel < 10000;
   ```
   ![select5](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/8929402f-e40d-4658-b849-ec95afffd4f0)
+## How to contribute
+- Fork the [repository](https://github.com/DarkMortal/Kaizer-DB/) in your GitHub account.
+- Make your changes.
+- Submit a pull request.
+- Code should well documented.
 ***

@@ -182,6 +182,9 @@ class queryWrapper {
         }
     }
 
+    // we will create a new file with the old records and
+    // when we find a row that matches the given conditions,
+    // we write the updated row instead of the old one
     async updateTable(tablename, updateFields, whereClauses, operators) {
 
         const fileName = `./${this.parentDir}${tablename}.csv`;
@@ -248,6 +251,8 @@ class queryWrapper {
         }
     }
 
+    // we will create a new file with the old records and
+    // when we find a row that matches the given conditions, we skip that row
     async deleteRecord(tablename, whereClauses, operators) {
 
         const fileName = `./${this.parentDir}${tablename}.csv`;
