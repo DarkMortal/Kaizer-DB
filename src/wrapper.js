@@ -1,6 +1,7 @@
 const parseQuery = require('./query_handlers/queryParser');
 const queryWrapper = require('./query_handlers/executeQuery');
-const table = require('./tableViewer');
+const table = require('./query_handlers/modules/tableViewer');
+const sort_tuples = require('./query_handlers/modules/sortingTuples');
 
 let wrapper = null;
 
@@ -33,10 +34,25 @@ async function executeQuery(query) {
         queryResult = await wrapper.insertRecords(parsedQuery.table, parsedQuery.fields, parsedQuery.values);
         console.log(queryResult);
     }
-    if (parsedQuery.type === "READ"){
+    if (parsedQuery.type === "READ" || parsedQuery.type === "READ_ORDER"){
         if(wrapper === null || wrapper === undefined) throw "No Database selected";
+
+        // if there is ORDER BY clause then that field needs to be included in the list of fields
+        if(parsedQuery.type === "READ_ORDER"){
+            if(parsedQuery.fields.length == 1){
+                if(parsedQuery.fields[0] !== '*' && parsedQuery.fields[0] !== parsedQuery.order_field) throw "Order by field needs to be included in fetch list";
+            }
+            if(parsedQuery.fields.length > 1){
+                if(!parsedQuery.fields.includes(parsedQuery.order_field)) throw "Order by field needs to be included in fetch list";
+            }
+        }
+
         queryResult = await wrapper.readTable(parsedQuery.table, parsedQuery.fields, parsedQuery.whereClauses, parsedQuery.operators);
-        if(queryResult.length > 0) table(queryResult);
+        if(queryResult.length > 0){
+            if(parsedQuery.type === "READ_ORDER")
+                queryResult.sort(sort_tuples(parsedQuery.order_field, parsedQuery.order_state));
+            table(queryResult);
+        }
         console.log(`${queryResult.length} rows returned`);
     }
     if (parsedQuery.type === "UPDATE"){

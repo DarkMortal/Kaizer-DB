@@ -1,4 +1,4 @@
-const regexDefault = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*(\w*)\s*[\',\"]*\s*\;$/;
+const regexDefault = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)\s*[\',\"]*\s*\;$/;
 const regexWhere = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)[\',\"]*\s*(?:\s*(WHERE|where|Where)\s*(.*))?\;$/i;
 const parseWhereRegex = /^\s*(\w+)\s*([=,>,<,>=,<=,!=]+)\s*[\',\"]*(\w+)[\',\"]*/;
 const createTableRegex = /^\s*(CREATE|create|Create)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+\((.*?)\)\;$/;
@@ -9,6 +9,9 @@ const deleteRecordRegex = /^\s*(DELETE|delete|Delete)\s+(FROM|from|From)\s+[\',\
 const dropTableRegex = /^\s*(DROP|drop|Drop)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s*\;/;
 const getTablesRegex = /^\s*(SHOW|show|Show)\s+(TABLES|tables|Tables)\s*\;$/;
 const createDatabase = /^\s*(CREATE|create|Create|USE|use|Use)\s+(DATABASE|database|Database)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s*\;$/;
+
+const regexDefaultOrder = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)\s*[\',\"]*\s*(ORDER|Order|order)\s*(BY|By|by)\s*(\w*)\s*(\s*|ASC|Asc|asc|DESC|Desc|desc)\;$/;
+const regexWhereOrder = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)[\',\"]*\s*(?:\s*(WHERE|where|Where)\s*(.*))?\s*(ORDER|Order|order)\s*(BY|By|by)\s*(\w*)\s*(\s*|ASC|Asc|asc|DESC|Desc|desc)\;$/i;
 
 const operatorArrayGlobal = ['AND','OR','and','or','And','Or'];
 const validateName = (tablename) => /^[^_,^\d][a-zA-z](\w*)$/.test(tablename);
@@ -45,6 +48,61 @@ function parseQuery(queryStr) {
             type: "READ"
         };
     }
+
+    query = queryStr.match(regexDefaultOrder);
+    if(query){
+        let tablename = query[4];
+        if(!validateName(tablename)) throw "Invalid Table Name";
+
+        let state = query[8].toLowerCase();
+        if(state == '') state = 'asc';
+
+        return {
+            fields: query[2].split(',').map(s => s.trim()),
+            table: tablename,
+            whereClauses: [],
+            operators: [],
+            order_field: query[7],
+            order_state: state,
+            type: "READ_ORDER"
+        };
+    }
+
+    query = queryStr.match(regexWhereOrder);
+    if (query) {
+        let tablename = query[4];
+        if(!validateName(tablename)) throw "Invalid Table Name";
+
+        let clauses = [], operators = [];
+        let whereClauseArray = query[6].split(/AND | OR | and | or | And | Or/i);
+        whereClauseArray.forEach(clause => {
+            let match = clause.match(parseWhereRegex);
+            clauses.push({
+                keyAttr: match[1],
+                comparator: match[2],
+                keyAttrValue: match[3]
+            })
+        });
+
+        let operatorArray = query[6].split(' ');
+        operatorArray.forEach(operator => {
+            if(operatorArrayGlobal.includes(operator))
+                operators.push(operator.toUpperCase());
+        });
+
+        let state = query[10].toLowerCase();
+        if(state == '') state = 'asc';
+
+        return {
+            fields: query[2].split(',').map(s => s.trim()),
+            table: tablename,
+            whereClauses: clauses,
+            operators: operators,
+            order_field: query[9],
+            order_state: state,
+            type: "READ_ORDER"
+        }
+    };
 
     query = queryStr.match(regexWhere);
     if (query) {
