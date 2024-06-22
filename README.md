@@ -84,7 +84,8 @@
   ```
   ![select5](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/8929402f-e40d-4658-b849-ec95afffd4f0)
   ## Order by clause
-  The default ordering is ascending order (`asc`,`Asc`,`ASC`). The descending order can be used as (`desc`,`Desc`,`DESC`)
+  The default ordering is ascending order (`asc`,`Asc`,`ASC`)<br/>The descending order can be used as (`desc`,`Desc`,`DESC`)
+  ### Examples
   ```
   Select * from test_data order by Defense;
   ```

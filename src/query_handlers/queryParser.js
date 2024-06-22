@@ -54,6 +54,8 @@ function parseQuery(queryStr) {
         let tablename = query[4];
         if(!validateName(tablename)) throw "Invalid Table Name";
 
+        if(query[8] == '') throw "Sorting column can't be empty";
+
         let state = query[8].toLowerCase();
         if(state == '') state = 'asc';
 
@@ -72,6 +74,8 @@ function parseQuery(queryStr) {
     if (query) {
         let tablename = query[4];
         if(!validateName(tablename)) throw "Invalid Table Name";
+
+        if(query[9] == '') throw "Sorting column can't be empty";
 
         let clauses = [], operators = [];
         let whereClauseArray = query[6].split(/AND | OR | and | or | And | Or/i);
