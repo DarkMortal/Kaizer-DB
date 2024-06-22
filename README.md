@@ -83,6 +83,26 @@
     Delete From Warriors Where PowerLevel < 10000;
   ```
   ![select5](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/8929402f-e40d-4658-b849-ec95afffd4f0)
+  ## Order by clause
+  The default ordering is ascending order (`asc`,`Asc`,`ASC`). The descending order can be used as (`desc`,`Desc`,`DESC`)
+  ```
+  Select * from test_data order by Defense;
+  ```
+  ![ser1](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/d05a923f-52ba-4334-a5fb-04330fe89d4a)
+  ```
+  Select * from test_data where Attack > 200 order by Defense desc;
+  ```
+  ![ser2](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/f356ba4b-4e94-4c93-a071-0cf6c446875a)
+  ```
+  Select Name, PowerLevel, Defense from test_data where Attack > 200 Order by Defense;
+  ```
+  ![ser3](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/ebdf3c20-0e46-49b4-928a-83144f6f7f3f)
+  ### Error handling
+  ```
+  > Select Name, PowerLevel from test_data where Attack > 200 Order by Defense;
+  Error: Order by field needs to be included in fetch list
+  ```
+  The sorting column must be present in the list of columns that needs to be fetched.
 ## How to contribute
 - Fork the [repository](https://github.com/DarkMortal/Kaizer-DB/) in your GitHub account.
 - Make your changes.
