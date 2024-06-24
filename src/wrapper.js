@@ -1,7 +1,7 @@
 const parseQuery = require('./query_handlers/queryParser');
 const queryWrapper = require('./query_handlers/executeQuery');
-const table = require('./query_handlers/modules/tableViewer');
-const sort_tuples = require('./query_handlers/modules/sortingTuples');
+const table = require('./modules/tableViewer');
+const sort_tuples = require('./modules/sortingTuples');
 
 let wrapper = null;
 
