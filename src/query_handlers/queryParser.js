@@ -88,10 +88,16 @@ function parseQuery(queryStr) {
             })
         });
 
-        let operatorArray = query[6].split(' ');
+        let operatorArray = query[6].split(/(<=|>=|<|>|=)/);
         operatorArray.forEach(operator => {
-            if(operatorArrayGlobal.includes(operator))
-                operators.push(operator.toUpperCase());
+            let t_arr = operator.trim().split(/\s+/);
+            if(t_arr.length > 1){
+                if(t_arr.length === 3){
+                    if(operatorArrayGlobal.includes(t_arr[1]))
+                        operators.push(t_arr[1].toUpperCase());
+                    else throw `Invalid Operator : ${t_arr[1]}`
+                }else throw "Invalid query";
+            }
         });
 
         let state = query[10].toLowerCase();
@@ -113,7 +119,7 @@ function parseQuery(queryStr) {
         let tablename = query[4];
         if(!validateName(tablename)) throw "Invalid Table Name";
 
-        let clauses = [], operators = [];
+        let clauses = [], operators_ = [];
         let whereClauseArray = query[6].split(/AND | OR | and | or | And | Or/i);
         whereClauseArray.forEach(clause => {
             let match = clause.match(parseWhereRegex);
@@ -124,17 +130,23 @@ function parseQuery(queryStr) {
             })
         });
 
-        let operatorArray = query[6].split(' ');
+        let operatorArray = query[6].split(/(<=|>=|<|>|=)/);
         operatorArray.forEach(operator => {
-            if(operatorArrayGlobal.includes(operator))
-                operators.push(operator.toUpperCase());
+            let t_arr = operator.trim().split(/\s+/);
+            if(t_arr.length > 1){
+                if(t_arr.length === 3){
+                    if(operatorArrayGlobal.includes(t_arr[1]))
+                        operators_.push(t_arr[1].toUpperCase());
+                    else throw `Invalid Operator : ${t_arr[1]}`
+                }else throw "Invalid query";
+            }
         });
 
         return {
             fields: query[2].split(',').map(s => s.trim()),
             table: tablename,
             whereClauses: clauses,
-            operators: operators,
+            operators: operators_,
             type: "READ"
         }
     };
@@ -162,10 +174,16 @@ function parseQuery(queryStr) {
                 keyAttrValue: match[3]
             });
         });
-        let operatorArray = query[7].split(' ');
+        let operatorArray = query[7].split(/(<=|>=|<|>|=)/);
         operatorArray.forEach(operator => {
-            if(operatorArrayGlobal.includes(operator))
-                operators_.push(operator.toUpperCase());
+            let t_arr = operator.trim().split(/\s+/);
+            if(t_arr.length > 1){
+                if(t_arr.length === 3){
+                    if(operatorArrayGlobal.includes(t_arr[1]))
+                        operators_.push(t_arr[1].toUpperCase());
+                    else throw `Invalid Operator : ${t_arr[1]}`
+                }else throw "Invalid query";
+            }
         });
 
         return {
@@ -221,10 +239,16 @@ function parseQuery(queryStr) {
                 keyAttrValue: match[3]
             });
         });
-        let operatorArray = query[5].split(' ');
+        let operatorArray = query[5].split(/(<=|>=|<|>|=)/);
         operatorArray.forEach(operator => {
-            if(operatorArrayGlobal.includes(operator))
-                operators_.push(operator.toUpperCase());
+            let t_arr = operator.trim().split(/\s+/);
+            if(t_arr.length > 1){
+                if(t_arr.length === 3){
+                    if(operatorArrayGlobal.includes(t_arr[1]))
+                        operators_.push(t_arr[1].toUpperCase());
+                    else throw `Invalid Operator : ${t_arr[1]}`
+                }else throw "Invalid query";
+            }
         });
 
         return {

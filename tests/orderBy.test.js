@@ -1,6 +1,6 @@
 const parseQuery = require('../src/query_handlers/queryParser');
 const queryWrapper = require('../src/query_handlers/executeQuery');
-const sort_tuples = require('../src/query_handlers/modules/sortingTuples');
+const sort_tuples = require('../src/modules/sortingTuples');
 
 let wrapper = new queryWrapper({ parentDir: "tests" });
 
