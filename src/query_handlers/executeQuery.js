@@ -1,8 +1,11 @@
 const fs = require('fs');
 const readline = require('readline');
 
+// Creates an array of empty strings with specified length
 const createNullArray = (n) => Array.from({ length: n }, () => '');
 
+// Evaluates a series of boolean conditions connected by AND/OR operators
+// Takes arrays of boolean values and operators, builds an evaluation string, and returns final result
 function calculateBooleanResult(booleanArray, operatorArray) {
     let i = 0;
     let evalString = booleanArray[i].toString();
@@ -19,6 +22,8 @@ function calculateBooleanResult(booleanArray, operatorArray) {
     return eval(evalString);
 }
 
+// Evaluates conditions in WHERE clauses by comparing two values with given operator
+// Handles both numeric and string comparisons automatically
 function evaluateWhereClause(lhs, rhs, operator){
     
     let x = parseFloat(lhs);
@@ -45,8 +50,11 @@ function evaluateWhereClause(lhs, rhs, operator){
     }
 }
 
+// Main class that handles CSV-based table operations similar to a simple database
+// Supports creating, reading, updating, and deleting tables and records
 class queryWrapper {
 
+    // Initializes the database directory structure
     constructor(options) {
         this.parentDir = options.parentDir.match(/\.*\/*(\w+)\/*/);
 
@@ -57,6 +65,8 @@ class queryWrapper {
         if (!fs.existsSync(this.parentDir)) fs.mkdirSync(this.parentDir);
     }
 
+    // Creates a new CSV table with specified field names as headers
+    // Throws error if table already exists
     async createTable(tablename, fields) {
         const fileName = `./${this.parentDir}${tablename}.csv`;
         const fileContent = fields.join(',');
@@ -73,6 +83,8 @@ class queryWrapper {
         return `Created Table: ${tablename}`;
     }
 
+    // Inserts new records into existing table
+    // Validates field names and tuple dimensions before insertion
     async insertRecords(tablename, fields, tuples) {
         const fileName = `./${this.parentDir}${tablename}.csv`;
 
@@ -128,6 +140,8 @@ class queryWrapper {
         }
     }
 
+    // Reads and filters table data based on specified fields and WHERE conditions
+    // Supports selecting all fields (*) or specific fields
     async readTable(tablename, fields, whereClauses, operators) {
         if (fields.length !== 1 && fields[0] !== '*') fields.forEach(field => {
             if (/[^a-zA-Z0-9\s]/.test(field)) throw `Invalid field name: ${field}`;
@@ -185,6 +199,7 @@ class queryWrapper {
     // we will create a new file with the old records and
     // when we find a row that matches the given conditions,
     // we write the updated row instead of the old one
+
     async updateTable(tablename, updateFields, whereClauses, operators) {
 
         const fileName = `./${this.parentDir}${tablename}.csv`;
@@ -251,7 +266,7 @@ class queryWrapper {
         }
     }
 
-    // we will create a new file with the old records and
+     // we will create a new file with the old records and
     // when we find a row that matches the given conditions, we skip that row
     async deleteRecord(tablename, whereClauses, operators) {
 
@@ -309,6 +324,7 @@ class queryWrapper {
         }
     }
 
+    // Returns list of all tables in the database
     async getTables() {
         const pattern = /(\w+).csv$/;
         let tables = [];
@@ -320,6 +336,7 @@ class queryWrapper {
         return tables;
     }
 
+    // Deletes an entire table from the database
     async deleteTable(tablename) {
         try {
             const fileName = `./${this.parentDir}${tablename}.csv`;
