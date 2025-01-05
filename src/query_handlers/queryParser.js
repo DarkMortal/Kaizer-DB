@@ -1,26 +1,42 @@
+// Regular expressions for parsing different types of SQL queries
+// Basic SELECT query without WHERE clause
 const regexDefault = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)\s*[\',\"]*\s*\;$/;
+// SELECT query with optional WHERE clause
 const regexWhere = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)[\',\"]*\s*(?:\s*(WHERE|where|Where)\s*(.*))?\;$/i;
+// Pattern for parsing individual WHERE conditions
 const parseWhereRegex = /^\s*(\w+)\s*([=,>,<,>=,<=,!=]+)\s*[\',\"]*(\w+)[\',\"]*/;
+// CREATE TABLE query pattern
 const createTableRegex = /^\s*(CREATE|create|Create)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+\((.*?)\)\;$/;
+// INSERT INTO query pattern
 const insertTableRegex = /^\s*(INSERT|insert|Insert)\s+(INTO|into|Into)\s+[\',\"]*(\w+)[\',\"]*\s*\((.*?)\)\s*(VALUES|values|Values)\s*(.*)\;$/i;
+// UPDATE query pattern
 const updateTableRegex = /^\s*(UPDATE|update|Update|)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+(SET|set|Set)\s+(.*)?\s+(WHERE|where|Where)\s*(.*)?\;$/;
+// DELETE query pattern
 const deleteRecordRegex = /^\s*(DELETE|delete|Delete)\s+(FROM|from|From)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s+(WHERE|where|Where)\s*(.*)?\;$/;
 
+// Database management patterns
 const dropTableRegex = /^\s*(DROP|drop|Drop)\s+(TABLE|table|Table)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s*\;/;
 const getTablesRegex = /^\s*(SHOW|show|Show)\s+(TABLES|tables|Tables)\s*\;$/;
 const createDatabase = /^\s*(CREATE|create|Create|USE|use|Use)\s+(DATABASE|database|Database)\s+[\',\"]*\s*(\w+)\s*[\',\"]*\s*\;$/;
 
+// SELECT queries with ORDER BY clause
 const regexDefaultOrder = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)\s*[\',\"]*\s*(ORDER|Order|order)\s*(BY|By|by)\s*(\w*)\s*(\s*|ASC|Asc|asc|DESC|Desc|desc)\;$/;
 const regexWhereOrder = /^\s*(SELECT|select|Select)\s+([\*,\s*,\w+]+)\s+(FROM|from|From)\s+[\',\"]*\s*([\w*]+)[\',\"]*\s*(?:\s*(WHERE|where|Where)\s*(.*))?\s*(ORDER|Order|order)\s*(BY|By|by)\s*(\w*)\s*(\s*|ASC|Asc|asc|DESC|Desc|desc)\;$/i;
 
+// Valid logical operators for WHERE clauses
 const operatorArrayGlobal = ['AND','OR','and','or','And','Or'];
+
+// Validates table and database names - must start with letter, can contain alphanumeric
 const validateName = (tablename) => /^[^_,^\d][a-zA-z](\w*)$/.test(tablename);
 
+// Main function to parse SQL queries into structured objects
 function parseQuery(queryStr) {
 
+    // Parse SHOW TABLES query
     var query = queryStr.match(getTablesRegex);
     if (query) return {type: "GET_ALL"}
 
+    // Parse CREATE/USE DATABASE query
     query = queryStr.match(createDatabase);
     if (query){
         let dbname = query[3].trim();
@@ -28,6 +44,7 @@ function parseQuery(queryStr) {
         return {database: dbname, type: "CREATE_DB"}
     }
 
+    // Parse DROP TABLE query
     query = queryStr.match(dropTableRegex);
     if (query){
         let tablename_ = query[3].trim();
@@ -35,6 +52,7 @@ function parseQuery(queryStr) {
         return {tablename: tablename_, type: "DELETE_TABLE"}
     }
     
+    // Parse basic SELECT query without WHERE/ORDER BY
     query = queryStr.match(regexDefault);
     if (query){
         let tablename = query[4];
@@ -49,6 +67,7 @@ function parseQuery(queryStr) {
         };
     }
 
+    // Parse SELECT query with ORDER BY but no WHERE clause
     query = queryStr.match(regexDefaultOrder);
     if(query){
         let tablename = query[4];
@@ -70,6 +89,7 @@ function parseQuery(queryStr) {
         };
     }
 
+    // Parse SELECT query with both WHERE and ORDER BY clauses
     query = queryStr.match(regexWhereOrder);
     if (query) {
         let tablename = query[4];
@@ -114,6 +134,7 @@ function parseQuery(queryStr) {
         }
     };
 
+    // Parse SELECT query with WHERE clause
     query = queryStr.match(regexWhere);
     if (query) {
         let tablename = query[4];
@@ -151,6 +172,7 @@ function parseQuery(queryStr) {
         }
     };
 
+    // Parse UPDATE query
     query = queryStr.match(updateTableRegex);
     if(query){
         let tablename = query[3];
@@ -195,6 +217,7 @@ function parseQuery(queryStr) {
         };
     }
 
+    // Parse CREATE TABLE query
     query = queryStr.match(createTableRegex);
     if(query) {
         let tablename = query[3];
@@ -207,6 +230,7 @@ function parseQuery(queryStr) {
         }
     }
 
+    // Parse INSERT INTO query
     query = queryStr.match(insertTableRegex);
     if(query) {
         let tablename = query[3];
@@ -225,6 +249,7 @@ function parseQuery(queryStr) {
         }
     }
 
+    // Parse DELETE query
     query = queryStr.match(deleteRecordRegex);
     if(query){
         let tablename = query[3];
