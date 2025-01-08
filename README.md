@@ -69,7 +69,7 @@ kaizer-db
 
 #### **Creating and Using a Database**
 
-```bash
+```
 Use Database mydb;
 Create Database mydb;
 ```
@@ -78,7 +78,7 @@ Creates a folder named `mydb` where tables are stored as `.csv` files.
 
 #### **Creating a Table**
 
-```bash
+```
 Create Table Warriors (Name, Attack, Defense, PowerLevel);
 ```
 
@@ -86,17 +86,19 @@ Creates a file named `Warriors.csv` with the given headers.
 
 #### **Show Tables**
 
-```bash
+```
 Show Tables;
 ```
 
-```bash
-┌─────────────┐
-│ Tables      │
-├─────────────┤
-│  test_data  │
-│  Warriors   │
-└─────────────┘
+```
+Output:
++-------------+
+| Tables      |
++-------------+
+| test_data   |
+| Warriors    |
++-------------+
+
 Total number of Tables: 2
 ```
 
@@ -104,7 +106,7 @@ Shows list of available csv files in the current directory which is used as the 
 
 #### **Inserting Data**
 
-```bash
+```
 Insert into Warriors (Name, Attack, Defense, PowerLevel) values (Goku, 5000, 7000, 9001), (Vegeta, 5000, 7000, 9000);
 ```
 
@@ -112,42 +114,42 @@ Appends records to `Warriors.csv`.
 
 #### **Fetching Data**
 
-```bash
+```
 Select * from Warriors;
 ```
 
-```bash
+```
 Output:
-┌──────────┬────────┬─────────┬────────────┐
-│ Name     │ Attack │ Defense │ PowerLevel │
-├──────────┼────────┼─────────┼────────────┤
-│  Goku    │  5000  │  7000   │  9001      │
-│  Vegeta  │  5000  │  7000   │  9000      │
-└──────────┴────────┴─────────┴────────────┘
++--------+--------+---------+------------+
+| Name   | Attack | Defense | PowerLevel |
++--------+--------+---------+------------+
+| Goku   |  5000  |   8000  |    9001    |
+| Vegeta |  5000  |   7000  |    9000    |
++--------+--------+---------+------------+
 
 2 rows returned
 ```
 
 #### **Using WHERE Clauses**
 
-```bash
+```
 Select Name from Warriors Where PowerLevel > 9000;
 ```
 
-```bash
+```
 Output:
-┌────────┐
-│ Name   │
-├────────┤
-│  Goku  │
-└────────┘
++--------+
+| Name   |
++--------+
+| Goku   |
++--------+
 
 1 rows returned
 ```
 
 #### **Updating Data**
 
-```bash
+```
 Update Table Warriors set PowerLevel = 10000, Defense = 8000 Where Name = Goku;
 Select * from Warriors;
 ```
@@ -166,12 +168,12 @@ Output:
 
 #### **Deleting Data**
 
-```bash
+```
 Delete From Warriors Where PowerLevel < 10000;
 Select * from Warriors;
 ```
 
-```bash
+```
 Output:
 +--------+--------+---------+------------+
 | Name   | Attack | Defense | PowerLevel |
@@ -252,7 +254,7 @@ Kaizer-DB provides meaningful error messages to guide users:
 
 #### Example
 
-```bash
+```
 Select Name, PowerLevel from Warriors Where Attack > 200 Order by Defense;
 ```
 
@@ -272,7 +274,7 @@ We welcome contributions to Kaizer-DB. Follow these steps to get started:
 2. **Clone the Repository**
 
 ```bash
-git clone https://github.com/<user-name>/Kaizer-DB.git
+git clone https://github.com/<contributor-user-name>/Kaizer-DB.git
 ```
 
 3. **Create a New Branch**
@@ -308,5 +310,5 @@ git push origin feature/your-feature-name
 - Submit the PR for review.
 
 ---
-
 We look forward to your contributions! Let us know if you need any assistance.
+***
