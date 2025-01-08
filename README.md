@@ -1,112 +1,312 @@
 # Kaizer DB
-## A lightweight and minimal csv database package
+
 ![logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)<br/>
 <a href="https://www.buymeacoffee.com/darkmortal" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;"></a>
-# Features
-- SQL like syntax
-- Works directly with CSV
-- Supports all CRUD functionalities like INSERT, DELETE etc
-# Drawbacks
-- No type checking
-- Only one query at a time
-- Doesn't support data with spaces
-# Getting started
-  If you are using this package from the GitHub repository
-  ```
-    yarn start
-  ```
-  ```
-    npm start
-  ```
-  If you are using this package from the npm repository
-  ```
-    require('kaizer-db')
-  ```
-  That's it! No fancy configuration or boiler code. It's as easy as that!!!
-# Usage  
-- Creating or using a database
-  ```
-    Use Database dbname;
-  ```
-  ```
-    Create Database dbname;
-  ```
-  Both these commands create a new folder named ```dbname``` where the tables are stored as ```csv``` files.
-- Show list of tables
-  ```
-    Show Tables;
-  ```
-  Shows list of available csv files in the current directory which is used as the database.
-  
-  ![first](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/2006a7e7-0520-462c-8eac-67426b74605d)
-- Creating a table
-  ```
-   Create Table Warriors (Name,Attack,Defense,PowerLevel);
-  ```
-  Creates a file named ```Warriors.csv``` in the current folder ```dbname``` with the given headers.
-- Inserting data in a table
-  ```
-    Insert into Warriors (Name,Attack,Defense,PowerLevel) values (Goku,5000,7000,9001), (Vegeta,5000,7000,9000);
-  ```
-  Appends 2 records to the file named ```Warriors.csv```
-- Getting records from a table
-  ```
-    Select * from Warriors;
-  ```
-  ![select1](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/b3d27689-1abb-48b9-8f0a-ccd0cf3bb07c)
-  ```
-    Select Name, PowerLevel from Warriors;
-  ```
-  ![select2](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/6b1c4dc2-2fb0-4255-86ae-333c859ab894)
-- Getting records from a table using ```WHERE``` clause
-  ```
-    Select Name from Warriors Where PowerLevel > 9000;
-  ```
-  ![select3](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/5c2061c0-22c5-4a62-945f-cd8005db062d)
-- Getting records from a table using multiple ```WHERE``` clauses
-  ```
-    Select * from Warriors Where PowerLevel > 9000 and Name = Goku;
-  ```
-  ![where1](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/c1f4c9cb-c021-444a-b442-e26bc4cc4f80)
-  ```
-    Select * from Warriors Where PowerLevel > 9000 or Name = Vegeta;
-  ```
-  ![where2](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/ab74704e-74da-4f98-a556-20ad0eed7599)
-- Updating a record using ```WHERE``` clause
-  ```
-    Update Table Warriors set PowerLevel = 10000, Defense = 8000 Where Name = Goku;
-  ```
-  ![updateQuery](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/8d162f1d-4e86-47ad-82ea-a688d4fa5bd5)
-- Deleting a record using ```WHERE``` clause
 
-  ```
-    Delete From Warriors Where PowerLevel < 10000;
-  ```
-  ![select5](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/8929402f-e40d-4658-b849-ec95afffd4f0)
-  ## Order by clause
-  The default ordering is ascending order (`asc`,`Asc`,`ASC`)<br/>The descending order can be used as (`desc`,`Desc`,`DESC`)
-  ### Examples
-  ```
-  Select * from test_data order by Defense;
-  ```
-  ![ser1](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/d05a923f-52ba-4334-a5fb-04330fe89d4a)
-  ```
-  Select * from test_data where Attack > 200 order by Defense desc;
-  ```
-  ![ser2](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/f356ba4b-4e94-4c93-a071-0cf6c446875a)
-  ```
-  Select Name, PowerLevel, Defense from test_data where Attack > 200 Order by Defense;
-  ```
-  ![ser3](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/ebdf3c20-0e46-49b4-928a-83144f6f7f3f)
-  ### Error handling
-  ```
-  > Select Name, PowerLevel from test_data where Attack > 200 Order by Defense;
-  Error: Order by field needs to be included in fetch list
-  ```
-  The sorting column must be present in the list of columns that needs to be fetched.
-## How to contribute
-- Fork the [repository](https://github.com/DarkMortal/Kaizer-DB/) in your GitHub account.
-- Make your changes.
-- Submit a pull request.
-- Code should well documented.
-***
+## A Lightweight and Minimal CSV Database Package
+
+Kaizer-DB is a simple and efficient tool for interacting with CSV files using SQL-like syntax. Designed to provide CRUD functionalities without the overhead of a full-fledged database, it is ideal for small projects or prototyping.
+
+---
+
+## Features
+
+- **SQL-like Syntax**: Write queries like `SELECT`, `INSERT`, `UPDATE`, and `DELETE` with ease.
+- **CSV Integration**: Works directly with CSV files to store and retrieve data.
+- **CRUD Support**: Perform essential Create, Read, Update, and Delete operations.
+
+---
+
+## Drawbacks
+
+- No type checking.
+- Executes only one query at a time.
+- Does not support data with spaces.
+
+---
+
+## Getting Started
+
+### Installation
+
+#### **1. From the GitHub Repository**
+
+Clone the repository and install dependencies:
+
+```bash
+# Clone the repository
+git clone https://github.com/DarkMortal/Kaizer-DB.git
+
+# Navigate to the project directory
+cd Kaizer-DB
+
+# Install dependencies
+yarn install # or npm install
+
+# Start the CLI
+yarn start # or npm start
+```
+
+#### **2. Global Installation**
+
+Install the package globally using npm:
+
+```bash
+npm install -g kaizer-db
+```
+
+Run the CLI from anywhere:
+
+```bash
+kaizer-db
+```
+
+---
+
+## Usage
+
+### Query Examples
+
+#### **Creating and Using a Database**
+
+```bash
+Use Database mydb;
+Create Database mydb;
+```
+
+Creates a folder named `mydb` where tables are stored as `.csv` files.
+
+#### **Creating a Table**
+
+```bash
+Create Table Warriors (Name, Attack, Defense, PowerLevel);
+```
+
+Creates a file named `Warriors.csv` with the given headers.
+
+#### **Show Tables**
+
+```bash
+Show Tables;
+```
+
+```bash
+┌─────────────┐
+│ Tables      │
+├─────────────┤
+│  test_data  │
+│  Warriors   │
+└─────────────┘
+Total number of Tables: 2
+```
+
+Shows list of available csv files in the current directory which is used as the database.
+
+#### **Inserting Data**
+
+```bash
+Insert into Warriors (Name, Attack, Defense, PowerLevel) values (Goku, 5000, 7000, 9001), (Vegeta, 5000, 7000, 9000);
+```
+
+Appends records to `Warriors.csv`.
+
+#### **Fetching Data**
+
+```bash
+Select * from Warriors;
+```
+
+```bash
+Output:
+┌──────────┬────────┬─────────┬────────────┐
+│ Name     │ Attack │ Defense │ PowerLevel │
+├──────────┼────────┼─────────┼────────────┤
+│  Goku    │  5000  │  7000   │  9001      │
+│  Vegeta  │  5000  │  7000   │  9000      │
+└──────────┴────────┴─────────┴────────────┘
+
+2 rows returned
+```
+
+#### **Using WHERE Clauses**
+
+```bash
+Select Name from Warriors Where PowerLevel > 9000;
+```
+
+```bash
+Output:
+┌────────┐
+│ Name   │
+├────────┤
+│  Goku  │
+└────────┘
+
+1 rows returned
+```
+
+#### **Updating Data**
+
+```bash
+Update Table Warriors set PowerLevel = 10000, Defense = 8000 Where Name = Goku;
+Select * from Warriors;
+```
+
+```
+Output:
++--------+--------+---------+------------+
+| Name   | Attack | Defense | PowerLevel |
++--------+--------+---------+------------+
+| Goku   |  5000  |   8000  |    10000   |
+| Vegeta |  5000  |   7000  |    9000    |
++--------+--------+---------+------------+
+
+2 rows returned
+```
+
+#### **Deleting Data**
+
+```bash
+Delete From Warriors Where PowerLevel < 10000;
+Select * from Warriors;
+```
+
+```bash
+Output:
++--------+--------+---------+------------+
+| Name   | Attack | Defense | PowerLevel |
++--------+--------+---------+------------+
+| Goku   |  5000  |   7000  |    10000   |
++--------+--------+---------+------------+
+
+1 rows returned
+```
+
+---
+
+## Order by clause
+
+The default ordering is ascending order (`asc`,`Asc`,`ASC`)<br/>The descending order can be used as (`desc`,`Desc`,`DESC`)
+
+### Examples
+
+```
+Select * from test_data order by Defense;
+```
+
+```
+Output:
++--------------------+---------+---------+-------------+
+| Name               | Attack  | Defense | Power Level |
++--------------------+---------+---------+-------------+
+| Karin_Uzumaki      | 100     | 92      | 510         |
+| Jayden_Uchiha      | 200     | 120     | 5000        |
+| Rykon_Hayashi      | 400     | 310     | 8100        |
+| Arkon_Hayashi      | 420     | 330     | 8000        |
+| Kakarot_Uchiha     | 500     | 340     | 9001        |
+| Drago_Uzumaki      | 460     | 350     | 8010        |
++--------------------+---------+---------+-------------+
+6 rows returned
+```
+
+```
+Select * from test_data where Attack > 200 order by Defense desc;
+```
+
+```
+Output:
++--------------------+---------+---------+-------------+
+| Name               | Attack  | Defense | Power Level |
++--------------------+---------+---------+-------------+
+| Drago_Uzumaki      | 460     | 350     | 8010        |
+| Kakarot_Uchiha     | 500     | 340     | 9001        |
+| Arkon_Hayashi      | 420     | 330     | 8000        |
+| Rykon_Hayashi      | 400     | 310     | 8100        |
++--------------------+---------+---------+-------------+
+4 rows returned
+```
+
+```
+Select Name, PowerLevel, Defense from test_data where Attack > 200 Order by Defense;
+```
+
+```
+Output:
++--------------------+-------------+---------+
+| Name               | Power Level | Defense |
++--------------------+-------------+---------+
+| Rykon_Hayashi      | 8100        | 310     |
+| Arkon_Hayashi      | 8000        | 330     |
+| Kakarot_Uchiha     | 9001        | 340     |
+| Drago_Uzumaki      | 8010        | 350     |
++--------------------+-------------+---------+
+
+4 rows returned
+```
+
+---
+
+## Error Handling
+
+Kaizer-DB provides meaningful error messages to guide users:
+
+#### Example
+
+```bash
+Select Name, PowerLevel from Warriors Where Attack > 200 Order by Defense;
+```
+
+```
+Output:
+Error: Order by field needs to be included in fetch list
+```
+
+---
+
+## Contribution Guidelines
+
+We welcome contributions to Kaizer-DB. Follow these steps to get started:
+
+1. **Fork the Repository**
+   Fork the Repository by using fork button.
+2. **Clone the Repository**
+
+```bash
+git clone https://github.com/<user-name>/Kaizer-DB.git
+```
+
+3. **Create a New Branch**
+
+```bash
+cd Kaizer-DB
+git checkout -b feature/your-feature-name
+```
+
+4. **Make Your Changes**
+
+- Edit the code as needed.
+- Add tests if applicable.
+
+5. **Commit Your Changes**
+
+```bash
+git add .
+git commit -m "Description of your changes"
+```
+
+6. **Push Your Changes**
+
+```bash
+git push origin feature/your-feature-name
+```
+
+7. **Create a Pull Request (PR)**
+
+- Go to your repository on GitHub.
+- Click on **New Pull Request**.
+- Provide a detailed description of your changes.
+- Submit the PR for review.
+
+---
+
+We look forward to your contributions! Let us know if you need any assistance.
