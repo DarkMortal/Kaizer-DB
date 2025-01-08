@@ -3,6 +3,9 @@
   "version": "1.2.7",
   "description": "A lightweight and minimal csv database package",
   "main": "index.js",
+  "bin": {
+  "kaizer-db": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/DarkMortal/Kaizer-DB/"
