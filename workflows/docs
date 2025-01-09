@@ -1,0 +1,34 @@
+Key Points in the Workflow:
+Trigger on Push:
+
+The workflow triggers when changes are pushed to the main branch or any branch starting with release/.
+Set Up Node.js:
+
+The actions/setup-node action sets up a Node.js environment compatible with your project.
+Install Dependencies:
+
+yarn install ensures all project dependencies are installed.
+Run Tests:
+
+Include a test step to ensure code quality before publishing. Update yarn test if your test script differs.
+Publish to NPM:
+
+The npm publish command pushes your package to the NPM registry.
+NODE_AUTH_TOKEN is a secret stored in your repository settings, granting permission to publish to NPM.
+Version Bumping:
+
+Automatically bump the version number using npm version. Adjust the patch to minor or major depending on your release strategy.
+Push Changes:
+
+The new version number and associated commit are pushed back to the repository.
+Additional Steps:
+Set Up NPM_TOKEN:
+
+In your repository, go to Settings > Secrets and Variables > Actions.
+Add a new secret named NPM_TOKEN with your NPM authentication token.
+Test Locally:
+
+Before committing the workflow file, ensure your package.json is configured correctly for publishing to NPM.
+Versioning Strategy:
+
+Decide whether to manually or automatically handle version bumps. Adjust the workflow accordingly.
