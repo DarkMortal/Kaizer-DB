@@ -35,7 +35,7 @@ jobs:
       # Step 5: Bump version and publish to NPM
       - name: Publish to NPM
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: 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 #${{ secrets.NPM_TOKEN }}
         run: |
           npm version patch -m "Release %s" # Adjust version type: patch, minor, or major
           npm publish
