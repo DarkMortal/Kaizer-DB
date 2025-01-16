@@ -37,7 +37,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn build # Build the package (if necessary)
           npm version patch -m "Release %s" # Adjust version type: patch, minor, or major
           npm publish
 
