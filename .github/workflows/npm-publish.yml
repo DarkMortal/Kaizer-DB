@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org/kaizer-db/
       - run: yarn install
       - run: git config --global user.name "DarkMortal"
       - run: git config --global user.email "dragonbeast.saiyan@gmail.com"
