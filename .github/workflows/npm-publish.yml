@@ -30,9 +30,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: http://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org/
       - run: yarn install
-      - run: git config --global user.name "DarkMortal"
+      - run: git config --global user.name "darkmortal"
       - run: git config --global user.email "dragonbeast.saiyan@gmail.com"
       - run: npm publish --access public --no-git-checks
         env:
