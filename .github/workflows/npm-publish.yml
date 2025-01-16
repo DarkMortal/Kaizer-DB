@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: yarn install
       - run: npm test
 
   publish-npm:
@@ -30,7 +31,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: yarn install
       - run: npm version patch -m "Release %s" # Adjust version type: patch, minor, or major
       - run: npm publish --access public --no-git-checks
         env:
