@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://replicate.npmjs.org/
+          registry-url: https://replicate.npmjs.com/
       - run: yarn install
       - run: git config --global user.name "darkmortal"
       - run: git config --global user.email "dragonbeast.saiyan@gmail.com"
