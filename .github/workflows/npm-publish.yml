@@ -39,10 +39,9 @@ jobs:
         run: |
           git config --global user.email "dragonbeast.saiyan@gmail.com"
           git config --global user.name "DarkMortal"
-          npm config set registry=https://registry.npmjs.org/kaizer-db
-          npm config set _authToken=$NODE_AUTH_TOKEN
-          npm config set username=darkmortal
-          npm config ser email=dragonbeast.saiyan@gmail.com
+          npm config set "//registry.npmjs.org/kaizer-db:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm config set "//registry.npmjs.org/kaizer-db:username=darkmortal"
+          npm config set "//registry.npmjs.org/kaizer-db:email=dragonbeast.saiyan@gmail.com"
           npm version patch -m "Release %s" # Adjust version type: patch, minor, or major
           npm publish --access public --no-git-checks
 
