@@ -41,7 +41,7 @@ jobs:
           git config --global user.name "DarkMortal"
           npm set "//registry.npmjs.org/kaizer-db:_authToken=$NODE_AUTH_TOKEN"
           npm version patch -m "Release %s" # Adjust version type: patch, minor, or major
-          npm publish
+          npm publish --access public
 
       # Step 6: Push changes back to the repository
       - name: Push version bump to repository
