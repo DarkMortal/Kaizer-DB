@@ -35,8 +35,10 @@ jobs:
       # Step 5: Bump version and publish to NPM
       - name: Publish to NPM
         env:
-          NPM_TOKEN: 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 #${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          git config --global user.email "dragonbeast.saiyan@gmail.com"
+          git config --global user.name "DarkMortal"
           npm version patch -m "Release %s" # Adjust version type: patch, minor, or major
           npm publish
 
