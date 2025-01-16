@@ -1,5 +1,5 @@
 {
-  "name": "@darkmortal/kaizer-db",
+  "name": "kaizer-db",
   "version": "1.2.8",
   "description": "A lightweight and minimal csv database package",
   "main": "index.js",
