@@ -34,7 +34,7 @@ jobs:
       - run: yarn install
       - run: git config --global user.name "DarkMortal"
       - run: git config --global user.email "dragonbeast.saiyan@gmail.com"
-      - run: npm publish --access public --no-git-checks
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: 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
  #${{ secrets.NPM_TOKEN }}
