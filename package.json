@@ -4,7 +4,7 @@
   "description": "A lightweight and minimal csv database package",
   "main": "index.js",
   "bin": {
-  "kaizer-db": "./index.js"
+    "kaizer-db": "./index.js"
   },
   "repository": {
     "type": "git",
@@ -14,14 +14,10 @@
     "test": "npx jest test",
     "start": "node index.js"
   },
-  "keywords": [
-    "kaizer",
-    "database",
-    "csv"
-  ],
   "author": "Saptarshi Dey",
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0"
-  }
+  },
+  "keywords": ["kaizer", "database", "csv"]
 }
