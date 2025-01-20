@@ -84,7 +84,7 @@ kaizer-db
 
 #### **Creating and Using a Database**
 
-```bash
+```
 Use Database mydb;
 Create Database mydb;
 ```
@@ -101,11 +101,11 @@ Creates a file named `Warriors.csv` with the given headers.
 
 #### **Show Tables**
 
-```bash
+```
 Show Tables;
 ```
 
-```bash
+```
 Output:
 +-------------+
 | Tables      |
@@ -121,7 +121,7 @@ Shows list of available csv files in the current directory which is used as the 
 
 #### **Inserting Data**
 
-```bash
+```
 Insert into Warriors (Name, Attack, Defense, PowerLevel) values (Goku, 5000, 7000, 9001), (Vegeta, 5000, 7000, 9000);
 ```
 
@@ -129,11 +129,11 @@ Appends records to `Warriors.csv`.
 
 #### **Fetching Data**
 
-```bash
+```
 Select * from Warriors;
 ```
 
-```bash
+```
 Output:
 +--------+--------+---------+------------+
 | Name   | Attack | Defense | PowerLevel |
@@ -147,11 +147,11 @@ Output:
 
 #### **Using WHERE Clauses**
 
-```bash
+```
 Select Name from Warriors Where PowerLevel > 9000;
 ```
 
-```bash
+```
 Output:
 +--------+
 | Name   |
@@ -164,12 +164,12 @@ Output:
 
 #### **Updating Data**
 
-```bash
+```
 Update Table Warriors set PowerLevel = 10000, Defense = 8000 Where Name = Goku;
 Select * from Warriors;
 ```
 
-```bash
+```
 Output:
 +--------+--------+---------+------------+
 | Name   | Attack | Defense | PowerLevel |
@@ -183,12 +183,12 @@ Output:
 
 #### **Deleting Data**
 
-```bash
+```
 Delete From Warriors Where PowerLevel < 10000;
 Select * from Warriors;
 ```
 
-```bash
+```
 Output:
 +--------+--------+---------+------------+
 | Name   | Attack | Defense | PowerLevel |
@@ -207,11 +207,11 @@ The default ordering is ascending order (`asc`,`Asc`,`ASC`)<br/>The descending o
 
 ### Examples
 
-```bash
+```
 Select * from test_data order by Defense;
 ```
 
-```bash
+```
 Output:
 +--------------------+---------+---------+-------------+
 | Name               | Attack  | Defense | Power Level |
@@ -227,11 +227,11 @@ Output:
 6 rows returned
 ```
 
-```bash
+```
 Select * from test_data where Attack > 200 order by Defense desc;
 ```
 
-```bash
+```
 Output:
 +--------------------+---------+---------+-------------+
 | Name               | Attack  | Defense | Power Level |
@@ -245,11 +245,11 @@ Output:
 4 rows returned
 ```
 
-```bash
+```
 Select Name, PowerLevel, Defense from test_data where Attack > 200 Order by Defense;
 ```
 
-```bash
+```
 Output:
 +--------------------+-------------+---------+
 | Name               | Power Level | Defense |
@@ -271,11 +271,11 @@ Kaizer-DB provides meaningful error messages to guide users:
 
 #### Example
 
-```bash
+```
 Select Name, PowerLevel from Warriors Where Attack > 200 Order by Defense;
 ```
 
-```bash
+```
 Output:
 Error: Order by field needs to be included in fetch list
 ```
