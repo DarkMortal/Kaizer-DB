@@ -1,53 +1,68 @@
-# Kaizer DB
+<h1 align="center" style="color: #1E90FF;">📊 Welcome to Kaizer-DB 📊</h1>
 
-![logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)<br/>
-<a href="https://www.buymeacoffee.com/darkmortal" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;"></a>
+<p align="center">
+  <img src="https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034" alt="Kaizer-DB Logo" width="200" />
+</p>
 
-## A Lightweight and Minimal CSV Database Package
-
-Kaizer-DB is a simple and efficient tool for interacting with CSV files using SQL-like syntax. Designed to provide CRUD functionalities without the overhead of a full-fledged database, it is ideal for small projects or prototyping.
-
----
-
-## Features
-
-- **SQL-like Syntax**: Write queries like `SELECT`, `INSERT`, `UPDATE`, and `DELETE` with ease.
-- **CSV Integration**: Works directly with CSV files to store and retrieve data.
-- **CRUD Support**: Perform essential Create, Read, Update, and Delete operations.
+<p align="center">
+  <a href="https://www.buymeacoffee.com/darkmortal" target="_blank">
+    <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px; width: 174px;">
+  </a>
+</p>
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Arial&size=24&pause=1000&duration=4000&color=4682B4&center=true&vCenter=true&width=1000&lines=Kaizer-DB;Lightweight+and+minimal+CSV+database+package+with+SQL-like+Syntax!" alt="Typing SVG" />
+</p>
 
 ---
 
-## Drawbacks
+<h2 style="color: #1E90FF;">🚀 Features 🚀</h2>
 
-- No type checking.
-- Executes only one query at a time.
-- Does not support data with spaces.
+<ul>
+    <li><strong>SQL-like Syntax</strong>: Easily write `SELECT`, `INSERT`, `UPDATE`, and `DELETE` queries.</li>
+    <li><strong>CSV Integration</strong>: Directly interact with CSV files as lightweight databases.</li>
+    <li><strong>CRUD Support</strong>: Perform essential Create, Read, Update, and Delete operations.</li>
+    <li><strong>Minimal Overhead</strong>: Ideal for prototyping and small-scale projects.</li>
+</ul>
 
 ---
 
-## Getting Started
+<h2 style="color: #1E90FF;">⚠️ Limitations ⚠️</h2>
+<ul>
+    <li>No type checking.</li>
+    <li>Supports only one query execution at a time.</li>
+    <li>Does not handle data with spaces.</li>
+</ul>
 
-### Installation
+---
 
-#### **1. From the GitHub Repository**
+<h2 style="color: #1E90FF;">🔧 Tech Stack 🔧</h2>
 
-Clone the repository and install dependencies:
+<p>
+  <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript" />
+  <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" />
+</p>
 
+---
+
+<h2 style="color: #1E90FF;">🎓 Installation & Setup 🎓</h2>
+
+### 1. Clone the Repository
 ```bash
-# Clone the repository
 git clone https://github.com/DarkMortal/Kaizer-DB.git
-
-# Navigate to the project directory
 cd Kaizer-DB
+```
 
-# Install dependencies
+### 2. Install dependencies
+```bash
 yarn install # or npm install
+```
 
-# Start the CLI
+### 3. Start the CLI
+```bash
 yarn start # or npm start
 ```
 
-#### **2. Global Installation**
+### **Global Installation**
 
 Install the package globally using npm:
 
@@ -63,7 +78,7 @@ kaizer-db
 
 ---
 
-## Usage
+<h2 style="color: #1E90FF;">💡 How It Works 💡</h2>
 
 ### Query Examples
 
@@ -267,9 +282,45 @@ Error: Order by field needs to be included in fetch list
 
 ---
 
-## Contribution Guidelines
+<h2 style="color: #1E90FF;">👥 Contributors 👥</h2> 
+<table style="background-color: #E6F7FF; border-radius: 10px; box-shadow: 0 4px 8px rgba(30, 144, 255, 0.2);">
+  <tr>
+    <td>
+      <a href="https://github.com/DarkMortal"> 
+        <img src="https://github.com/DarkMortal.png" width="100px;" alt="DarkMortal"/><br /> 
+        <sub><b>DarkMortal</b></sub> 
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/dpgaharwal"> 
+        <img src="https://github.com/dpgaharwal.png" width="100px;" alt="dpgaharwal"/><br /> 
+        <sub><b>dpgaharwal</b></sub> 
+      </a> 
+    </td>
+    <td>
+      <a href="https://github.com/adwityac"> 
+        <img src="https://github.com/adwityac.png" width="100px;" alt="adwityac"/><br /> 
+        <sub><b>adwityac</b></sub> 
+      </a> 
+    </td>
+    <td>
+      <a href="https://github.com/aprajitapandeyxcghd"> 
+        <img src="https://github.com/aprajitapandeyxcghd.png" width="100px;" alt="aprajitapandeyxcghd"/><br /> 
+        <sub><b>aprajitapandeyxcghd</b></sub> 
+      </a> 
+    </td>
+    <td>
+      <a href="https://github.com/GauravKarakoti"> 
+        <img src="https://github.com/GauravKarakoti.png" width="100px;" alt="GauravKarakoti"/><br /> 
+        <sub><b>GauravKarakoti</b></sub> 
+      </a> 
+    </td>
+  </tr>
+</table>
 
-We welcome contributions to Kaizer-DB. Follow these steps to get started:
+<h3>
+    We welcome contributions to Kaizer-DB. Follow these steps to get started:
+</h3>
 
 1. **Fork the Repository**
    Fork the Repository by using fork button.
@@ -311,6 +362,7 @@ git push origin feature/your-feature-name
 - Provide a detailed description of your changes.
 - Submit the PR for review.
 
-***
-We look forward to your contributions! Let us know if you need any assistance.
-***
+<h2 style="color: #1E90FF;">📜 License 📜</h2> <p>MIT License © 2025 DarkMortal</p> 
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Arial&size=24&pause=1000&duration=4000&color=4682B4&center=true&vCenter=true&width=1000&lines=Happy+Querying+with+Kaizer-DB!;We+await+your+return!" alt="Typing SVG" />
+</p>
