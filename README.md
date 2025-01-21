@@ -2,7 +2,9 @@
 
 ![Logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)<br/>
 ![NPM Downloads](https://img.shields.io/npm/d18m/kaizer-db?style=for-the-badge&label=Total%20Downloads)
-![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)
+<a href="https://www.buymeacoffee.com/darkmortal" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" style="height: 41px; width: 174px;">
+</a>
 ---
 
 <h2>🚀 Features 🚀</h2>
@@ -48,8 +50,7 @@ yarn install # or npm install
 yarn start # or npm start
 ```
 
-### **Global Installation**
-
+### 4. Global Installation
 Install the package globally using npm:
 
 ```bash
