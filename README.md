@@ -1,8 +1,6 @@
-<h1 align="center" style="color: #1E90FF;">📊 Welcome to Kaizer-DB 📊</h1>
+<h1>📊 Welcome to Kaizer-DB 📊</h1>
 
-<p align="center">
-  <img src="https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034" alt="Kaizer-DB Logo" width="200" />
-</p>
+![Logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)
 
 <p align="center">
   <a href="https://www.buymeacoffee.com/darkmortal" target="_blank">
@@ -15,36 +13,32 @@
 
 ---
 
-<h2 style="color: #1E90FF;">🚀 Features 🚀</h2>
+<h2>🚀 Features 🚀</h2>
 
-<ul>
-    <li><strong>SQL-like Syntax</strong>: Easily write `SELECT`, `INSERT`, `UPDATE`, and `DELETE` queries.</li>
-    <li><strong>CSV Integration</strong>: Directly interact with CSV files as lightweight databases.</li>
-    <li><strong>CRUD Support</strong>: Perform essential Create, Read, Update, and Delete operations.</li>
-    <li><strong>Minimal Overhead</strong>: Ideal for prototyping and small-scale projects.</li>
-</ul>
-
+- SQL-like Syntax</strong>: Easily write `SELECT`, `INSERT`, `UPDATE`, and `DELETE` queries.
+- CSV Integration</strong>: Directly interact with CSV files as lightweight databases.
+- CRUD Support</strong>: Perform essential Create, Read, Update, and Delete operations.
+- Minimal Overhead</strong>: Ideal for prototyping and small-scale projects.
 ---
 
-<h2 style="color: #1E90FF;">⚠️ Limitations ⚠️</h2>
-<ul>
-    <li>No type checking.</li>
-    <li>Supports only one query execution at a time.</li>
-    <li>Does not handle data with spaces.</li>
-</ul>
+<h2>⚠️ Limitations ⚠️</h2>
 
+- No type checking.
+- Supports only one query execution at a time.
+- Does not handle data with spaces.
 ---
 
-<h2 style="color: #1E90FF;">🔧 Tech Stack 🔧</h2>
+<h2>🔧 Tech Stack 🔧</h2>
 
 <p>
   <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript" />
   <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" />
+  <img src="https://img.icons8.com/color/48/000000/npm.png" alt="NPM" />
 </p>
 
 ---
 
-<h2 style="color: #1E90FF;">🎓 Installation & Setup 🎓</h2>
+<h2>🎓 Installation & Setup 🎓</h2>
 
 ### 1. Clone the Repository
 ```bash
@@ -80,7 +74,7 @@ kaizer-db
 
 <h2 style="color: #1E90FF;">💡 How It Works 💡</h2>
 
-### Query Examples
+### Example Queries
 
 #### **Creating and Using a Database**
 
@@ -267,8 +261,7 @@ Output:
 
 ## Error Handling
 
-Kaizer-DB provides meaningful error messages to guide users:
-
+Kaizer-DB provides meaningful error messages to guide users.
 #### Example
 
 ```
@@ -361,8 +354,9 @@ git push origin feature/your-feature-name
 - Click on **New Pull Request**.
 - Provide a detailed description of your changes.
 - Submit the PR for review.
-
+<hr/>
 <h2 style="color: #1E90FF;">📜 License 📜</h2> <p>MIT License © 2025 DarkMortal</p> 
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Arial&size=24&pause=1000&duration=4000&color=4682B4&center=true&vCenter=true&width=1000&lines=Happy+Querying+with+Kaizer-DB!;We+await+your+return!" alt="Typing SVG" />
 </p>
+<hr/>
