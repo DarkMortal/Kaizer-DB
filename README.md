@@ -1,16 +1,8 @@
 <h1>📊 Welcome to Kaizer-DB 📊</h1>
 
-![Logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)
-
-<p align="center">
-  <a href="https://www.buymeacoffee.com/darkmortal" target="_blank">
-    <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px; width: 174px;">
-  </a>
-</p>
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Arial&size=24&pause=1000&duration=4000&color=4682B4&center=true&vCenter=true&width=1000&lines=Kaizer-DB;Lightweight+and+minimal+CSV+database+package+with+SQL-like+Syntax!" alt="Typing SVG" />
-</p>
-
+![Logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)<br/>
+![NPM Downloads](https://img.shields.io/npm/d18m/kaizer-db?style=for-the-badge&label=Total%20Downloads)
+![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)
 ---
 
 <h2>🚀 Features 🚀</h2>
@@ -356,7 +348,4 @@ git push origin feature/your-feature-name
 - Submit the PR for review.
 <hr/>
 <h2 style="color: #1E90FF;">📜 License 📜</h2> <p>MIT License © 2025 DarkMortal</p> 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Arial&size=24&pause=1000&duration=4000&color=4682B4&center=true&vCenter=true&width=1000&lines=Happy+Querying+with+Kaizer-DB!;We+await+your+return!" alt="Typing SVG" />
-</p>
 <hr/>
