@@ -327,6 +327,7 @@ git checkout -b feature/your-feature-name
 
 - Edit the code as needed.
 - Add tests if applicable.
+- Update the version details in `package.json` file.
 
 5. **Commit Your Changes**
 
