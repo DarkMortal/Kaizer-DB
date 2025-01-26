@@ -201,7 +201,7 @@ Select * from test_data order by Defense;
 ```
 Output:
 +--------------------+---------+---------+-------------+
-| Name               | Attack  | Defense | Power Level |
+| Name               | Attack  | Defense | PowerLevel |
 +--------------------+---------+---------+-------------+
 | Karin_Uzumaki      | 100     | 92      | 510         |
 | Jayden_Uchiha      | 200     | 120     | 5000        |
@@ -221,7 +221,7 @@ Select * from test_data where Attack > 200 order by Defense desc;
 ```
 Output:
 +--------------------+---------+---------+-------------+
-| Name               | Attack  | Defense | Power Level |
+| Name               | Attack  | Defense | PowerLevel |
 +--------------------+---------+---------+-------------+
 | Drago_Uzumaki      | 460     | 350     | 8010        |
 | Kakarot_Uchiha     | 500     | 340     | 9001        |
@@ -239,7 +239,7 @@ Select Name, PowerLevel, Defense from test_data where Attack > 200 Order by Defe
 ```
 Output:
 +--------------------+-------------+---------+
-| Name               | Power Level | Defense |
+| Name               | PowerLevel | Defense |
 +--------------------+-------------+---------+
 | Rykon_Hayashi      | 8100        | 310     |
 | Arkon_Hayashi      | 8000        | 330     |
