@@ -3,7 +3,7 @@
 ![Logo](https://github.com/DarkMortal/Kaizer-DB/assets/67017303/cc9882fe-6980-4fcd-b211-bcdb5ea8d034)<br/>
 ![NPM Downloads](https://img.shields.io/npm/d18m/kaizer-db?style=for-the-badge&label=Total%20Downloads)
 <a href="https://www.buymeacoffee.com/darkmortal" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" style="height: 41px; width: 174px;">
+  <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="174px" height="41px">
 </a>
 ---
 
@@ -201,7 +201,7 @@ Select * from test_data order by Defense;
 ```
 Output:
 +--------------------+---------+---------+-------------+
-| Name               | Attack  | Defense | PowerLevel |
+| Name               | Attack  | Defense | PowerLevel  |
 +--------------------+---------+---------+-------------+
 | Karin_Uzumaki      | 100     | 92      | 510         |
 | Jayden_Uchiha      | 200     | 120     | 5000        |
@@ -221,7 +221,7 @@ Select * from test_data where Attack > 200 order by Defense desc;
 ```
 Output:
 +--------------------+---------+---------+-------------+
-| Name               | Attack  | Defense | PowerLevel |
+| Name               | Attack  | Defense | PowerLevel  |
 +--------------------+---------+---------+-------------+
 | Drago_Uzumaki      | 460     | 350     | 8010        |
 | Kakarot_Uchiha     | 500     | 340     | 9001        |
@@ -239,7 +239,7 @@ Select Name, PowerLevel, Defense from test_data where Attack > 200 Order by Defe
 ```
 Output:
 +--------------------+-------------+---------+
-| Name               | PowerLevel | Defense |
+| Name               | PowerLevel  | Defense |
 +--------------------+-------------+---------+
 | Rykon_Hayashi      | 8100        | 310     |
 | Arkon_Hayashi      | 8000        | 330     |

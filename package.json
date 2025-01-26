@@ -1,7 +1,7 @@
 {
   "name": "kaizer-db",
-  "version": "1.3.3",
-  "description": "A lightweight and minimal csv database package",
+  "version": "1.3.4",
+  "description": "A lightweight and minimal csv database package with SQL-like syntax",
   "main": "index.js",
   "bin": {
     "kaizer-db": "./index.js"
